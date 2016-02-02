@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="expires" content="0" />
+	<meta name="author" content="Editora do Brasil" />
+	<meta name="copyright" content="© 2014 Editoradobrasil.com.br" />
+	<meta name="apple-mobile-web-app-capable" content="yes"> 
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="apple-mobile-web-app-title" content="Editora do Brasil">
+	<link rel="stylesheet" href="css/normalize.css" type="text/css">
+	<link rel="stylesheet" href="css/animate.css" type="text/css">
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	
+	<script>
+		function iniciar_oed_frame(){
+			alert("iniciar_oed_frame");
+			iniciar_com_tap();
+		}	
+	</script>
+	
+	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script>
+	<script type="text/javascript" src="js/jquery.ui.touch-punch.js"></script>
+	<script type="text/javascript" src="js/telaScale.js"></script>
+	<script type="text/javascript" src="js/PxLoader.js"></script>
+	<script type="text/javascript" src="js/PxLoaderImage.js"></script>
+	<script type="text/javascript" src="js/funcoes.js"></script>
+	<title></title>
+</head>
+
+<body>
+<div id="loading"><img src="img/loader.gif" alt="Carregando">Carregando</div>
+<div id="init" class="container" data-fullscreen="true">
+	<div id="capa">
+		<div class="header">
+			<h1></h1>
+		</div>
+		<div class="subheader">
+			<span style="position: absolute; color: #fff; top: 15px; left: 258px; font-size: 33px; color: #FFFFFF; font-family: 'MyriadProRegular';">-</span>	
+			<p></p>
+		</div>
+		<div class="acoes">
+			<div>Iniciar</div>
+			<div>créditos</div>
+		</div>
+		<div id="creditos">
+			<div class="barraLogo">
+				<img src="img/logo.png">
+			</div>
+			<h2>Projeto Jimboê</h2>
+			<div class="boxTextMask"></div>
+			<div class="boxText">
+				<div class="text-creditos">
+					<strong>Supervisão de arte, editoração e produção digital:</strong> Adelaide Carolina Cerutti<br>
+					<strong>Coordenação de produção digital:</strong> Daniel Cilli<br><br>
+				
+					<strong>Design instrucional:</strong> Mateus Carneiro Ribeiro Alves<br>
+					<strong>Web design:</strong> Thiago Hille e Tiago Lima<br>
+					<strong>Assistência de design digital:</strong> Emília Akemi<br>
+					<strong>Assistência de arte:</strong> Livia Danielli <br>
+					<strong>Revisão:</strong> Equipe Revisão <br>
+					<strong>Pesquisa iconográfica:</strong> Mariane Mota <br>
+					<strong>Imagens/Ilustrações:</strong> Shutterstock<br>
+					<strong>Áudio:</strong> Stereobot e Soundsnap<br>
+					<strong>Narração:</strong> Flávio Kranic<br>
+					<strong>Controle de processos editoriais:</strong> Equipe CPE<br>
+				</div>
+			</div>
+			<div class="btnFechaCreditos">Fechar</div>
+		</div>
+	</div>
+<!-- Start code -->
+	<div id="content">
+		<div id="bemvindo">
+			<div class="fala">
+				<h2>Olá, crianças!</h2>
+				<p>
+					Sejam bem-vindas ao zoológico das unidades de medida! Aqui vocês percorrerão caminhos que os levarão a diversas atrações. Em cada uma delas, há um desafio e muitas informações. Boa diversão!
+				</p>
+				<span></span>
+			</div>
+			<div class="personagem1">
+				<img src="img/personagem1.png" alt="" name="p1">
+			</div>
+			<div class="personagem2">
+				<img src="img/personagem2.png" alt="" name="p2">
+			</div>
+			<div class="professor">
+				<img src="img/professor.png" alt="">
+			</div>
+		</div>
+		<div id="personagem"></div>
+		<div class="stepbystep"><p></p></div>
+		<div class="imgItens"></div>
+		<div class="fala2">
+			<h2>Parabéns!</h2>
+			<p>Você completou o passeio e conheceu todo o zoológico.</p>
+			<span></span>
+		</div>
+		<!-- Feedback do instrutor do zoo -->
+		<div id="feedback">
+			<div>
+				<p>
+				</p>
+				<span></span>
+			</div>
+			<div class="professorF">
+				<img src="img/professor.png" alt="">
+			</div>
+		</div>
+		
+		<!-- Layout Fase1 -->
+		<div class="pergunta" id="id1">
+			<div class="exercicio">
+				<h2>Qual o tamanho do pescoço dessa girafa?</h2>
+				<img src="img/exercicio1-girafa.png" alt="" class="ilustra-exe1">
+				<p class="resposta1">130 cm</p>
+				<ul>
+					<li><img src="img/exe1-btn1.jpg" alt="medida"><br>50 cm</li>
+					<li class="acerto"><img src="img/exe1-btn2.jpg" alt="medida"><br>130 cm</li>
+					<li><img src="img/exe1-btn3.jpg" alt="medida"><br>80 cm</li>
+					<li><img src="img/exe1-btn4.jpg" alt="medida"><br>10 cm</li>
+				</ul>
+			</div>
+			<div class="descricao">
+				<h2>Sobre o pescoço das girafas.</h2>
+				<p>As girafas são animais muito altos. Na fase adulta, podem medir até 6 metros de altura. As pernas e o pescoço, que pode chegar a 2 metros de altura, são duas partes da girafa que contribuem bastante para que ela alcance esse tamanho.</p>
+				<div class="chances">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+				</div>
+			</div>
+		</div>
+		
+		<!-- Layout Fase2 -->
+		<div class="pergunta" id="id2">
+			<div class="exercicio">
+				<h2>Observando as frutas em equilíbrio nas balanças, responda: Como poderemos equilibrar a alimentação dos elefantes usando esses três tipos de frutas?</h2>
+				<img src="img/exercicio2-balancas.png" alt="" class="ilustra-exe2">
+				<ul>
+					<li><img src="img/exe2-btn1.png" alt="medida"></li>
+					<li><img src="img/exe2-btn2.png" alt="medida"></li>
+					<li class="acerto"><img src="img/exe2-btn3.png" alt="medida"></li>
+				</ul>
+			</div>
+			<div class="descricao">
+				<h2>Sobre a alimentação dos elefantes.</h2>
+				<p>Os elefantes são os maiores animais terrestres. Na fase adulta, são capazes de ingerir 100 kg de alimentos em um só dia. Apesar de seu tamanho e peso, eles têm uma dieta rica em alimentos pequenos, por exemplo, frutas.</p>
+				<img src="img/elefante.png" alt="" style="margin-left:58px;">
+				<div class="chances">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+				</div>
+			</div>
+		</div>
+		
+		<!-- Layout Fase3 -->
+		<div class="pergunta" id="id3">
+			<div class="exercicio">
+				<h2>Utilizando um recipiente com capacidade de 30 litros e outro com capacidade de 10 litros, coloque 20 litros de água para o camelo.</h2>
+				<img src="img/camelo.png" alt="" class="ilustra-exe3">
+				<div class="recipiente1 preencher-vazio ativo"><img src="img/rec1-vazio.png" alt=""></div>
+				<div class="recipiente1 preencher-medio"><img src="img/rec1-medio.png" alt=""></div>
+				<div class="recipiente1 preencher-cheio"><img src="img/rec1-cheio.png" alt=""></div>
+				<ul>
+					<li class="recipiente2" name="recipiente2"></li>
+					<li class="recipiente3" name="recipiente3"></li>
+					<li class="recipiente4 btnEtapa2" name="recipiente4"></li>
+				</ul>
+			</div>
+			<div class="descricao">
+				<h2>Sobre a capacidade dos camelos de ficar dias sem beber água.</h2>
+				<p>O camelo é um animal que pode passar dias sem ingerir água ou muita comida. Ele é capaz de ficar sem comer muito porque as duas corcovas nas costas acumulam energia na forma de gordura. Ele fica sem ingerir água por dias porque, quando pode, bebe dezenas de litros de uma só vez.</p>
+				<div class="chances">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+				</div>
+			</div>
+		</div>
+		
+		<!-- Layout Fase4 -->
+		<div class="pergunta" id="id4">
+			<div class="exercicio">
+				<h2>Observe as pegadas deixadas pelo gorila. Qual o instrumento de medição mais adequado para medir a distância entre elas?</h2>
+				<img src="img/gorila.png" alt="" class="ilustra-exe4">
+				<div class="metrica"></div>
+				<ul>
+					<li><img src="img/exe4-btn1.png" alt="medida"></li>
+					<li><img src="img/exe4-btn2.png" alt="medida"></li>
+					<li class="acerto"><img src="img/exe4-btn3.png" alt="medida"></li>
+				</ul>
+			</div>
+			<div class="descricao">
+				<h2>Sobre os gorilas.</h2>
+				<p>O gorila é um dos maiores primatas existentes. De braços abertos, sua envergadura ultrapassa a própria altura e aproxima-se de três metros. Ele se locomove em quatro patas e usa os braços como apoio, apesar de ser capaz de ficar de pé em duas patas. Por apoiar o peso do corpo nos braços ao caminhar, dependendo do solo, o gorila deixa<br>pegadas nítidas.</p>
+				<div class="chances">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+				</div>
+			</div>
+		</div>
+		
+		<!-- Layout Fase5 -->
+		<div class="pergunta" id="id5">
+			<div class="exercicio">
+				<h2>Observe a quantidade de carne que cada animal come por dia. Juntos, o tigre adulto e o filhote comem <img src="img/imagem_exe5.png" alt="" style="vertical-align:middle;"><span></span> de carne por dia.</h2>
+				
+				<ul>
+					<li>3 kg<br>500 g</li>
+					<li>2 kg</li>
+					<li class="acerto">4 kg</li>
+					<li>2 kg<br>500 g</li>
+				</ul>
+			</div>
+			<div class="descricao">
+				<h2>Sobre os tigres.</h2>
+				<p>Os tigres são felinos, carnívoros e podem ter listras. Os animais carnívoros alimentam-se de carne. Os tigres obtêm carne por meio da caça e, para isso, as listras os ajudam bastante, pois elas fazem com que os tigres aproximem-se da presa sem serem notados, ou seja, elas<br>os camuflam.</p>
+				<div class="chances">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+				</div>
+			</div>
+		</div>
+		
+		<!-- Layout Fase6 -->
+		<div class="pergunta" id="id6">
+			<div class="exercicio">
+				<h2>De acordo com o texto ao lado, quantas horas os ursos costumam dormir diariamente quando não estão hibernando?</h2>
+				<span>8 horas</span>
+				<img src="img/urso.png" alt="" class="ilustra-exe6">
+				<ul>
+					<li>10<br>horas</li>
+					<li>12<br>horas</li>
+					<li class="acerto">8<br>horas</li>
+					<li>16<br>horas</li>
+				</ul>
+			</div>
+			<div class="descricao">
+				<h2>Sobre a hibernação dos ursos.</h2>
+				<p style="display:block; max-height:380px; overflow:auto;">Os ursos habitam regiões de tão baixas temperaturas durante o inverno que, às vezes, os rios congelam. O congelamento dos rios provoca escassez de alimentos para os ursos.<br>A solução adotada por eles é hibernar em locais protegidos até mudar a estação. Na hibernação, os ursos dormem o dia todo, muito diferente dos 480 minutos diários de sono a que estão acostumados. Dormindo, os ursos gastam menos energia, e tiram de sua própria gordura a pouca energia e água de que precisam para hibernar.</p>
+				<div class="chances">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+				</div>
+			</div>
+		</div>
+		
+		<!-- Layout Fase7 -->
+		<div class="pergunta" id="id7">
+			<div class="exercicio">
+				<h2>Em um dia, as andorinhas percorrem<br><img src="img/imagem_exe7.png" alt="" style="vertical-align:middle;"><span></span> quilômetros.</h2>
+				<ul>
+					<li>300 km</li>
+					<li class="acerto">600 km</li>
+					<li>900 km</li>
+					<li>330 km</li>
+				</ul>
+			</div>
+			<div class="descricao">
+				<h2>Sobre as andorinhas.</h2>
+				<p>As andorinhas são aves com tamanho próximo ao de uma régua de 15 centímetros. Apesar do pequeno tamanho, elas são aves migratórias, ou seja, voam de um hemisfério a outro do globo terrestre em determinadas épocas para fugir da estação mais fria do ano, o inverno.</p>
+				<div class="chances">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+					<img src="" alt="">
+				</div>
+			</div>
+		</div>
+		
+		
+		<!-- Layout Fase8 -->
+		<div class="pergunta" id="id8">
+			<div class="exercicio">
+				<h2 style="float:left;">Observe nos relógios a hora de entrada e saída do zoológico.<br>Quanto tempo durou o passeio?</h2>
+				<img src="img/relogio.png" alt="" class="ilustra-exe8" style="margin:-37px 0 0 37px;">
+				<ul>
+					<li>1 hora</li>
+					<li class="acerto">3 horas</li>
+					<li>5 horas</li>
+					<li>10 horas</li>
+				</ul>
+			</div>
+			<div class="chances">
+				<img src="" alt="">
+				<img src="" alt="">
+				<img src="" alt="">
+				<img src="" alt="">
+				<img src="" alt="">
+				<img src="" alt="">
+			</div>
+		</div>
+		
+		
+	</div>
+	<div class="jnlFeed pgrMap1-p1"></div>
+	<div class="jnlFeed pgrMap2-p1"></div>
+	<div class="jnlFeed pgrMap3-p1"></div>
+	<div class="pgrMap4-p1"></div>
+	<div class="pgrMap5-p1"></div>
+	<div class="pgrMap6-p1"></div>
+	<div class="pgrMap7-p1"></div>
+	<div class="pgrMap8-p1"></div>
+	<div class="pgrMap9-p1"></div>
+
+	<div class="pgrMap1-p2"></div>
+	<div class="pgrMap2-p2"></div>
+	<div class="pgrMap3-p2"></div>
+	<div class="pgrMap4-p2"></div>
+	<div class="pgrMap5-p2"></div>
+	<div class="pgrMap6-p2"></div>
+	<div class="pgrMap7-p2"></div>
+	<div class="pgrMap8-p2"></div>
+	<div class="pgrMap9-p2"></div>
+	<canvas id="canvas"></canvas>
+	
+<!-- Final code -->
+</div>
+
+
+</body>
+
+</html>
