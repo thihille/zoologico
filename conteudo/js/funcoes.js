@@ -1044,7 +1044,6 @@ function StopConfetti() {
 	function verificar_inicio(){
 	  verificar_inicio_cnd = setInterval(function(){
 	  if(window.sessionStorage.getItem('iniciar_oed')=='sim'){
-		  //alert("iniciar_oed");
 	      //startGame.init();
 		  iniciar_oed_funcoes();
 	      clearInterval(verificar_inicio_cnd);
@@ -1053,8 +1052,7 @@ function StopConfetti() {
 	}
 }
 
-	function iniciar_com_tap(){
-	alert("Tap");
-	iniciar_oed_funcoes();
-	clearInterval(verificar_inicio_cnd);
+function iniciar_com_tap(){
+    iniciar_oed_funcoes();
+    clearInterval(verificar_inicio_cnd);
 }
