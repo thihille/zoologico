@@ -1,6 +1,50 @@
 var verificar_inicio_cnd;
 var txtLvl = 0;
 
+var musica = new Howl({
+    urls: ['media/audio/musica.mp3'],
+    volume: 1,
+    onend: function() {
+        musica.stop().play();
+    }
+});
+var som_bemvindo = new Howl({
+    urls: ['media/audio/bemvindo.mp3'],
+    volume: 1,
+    onend: function() {
+        $('.personagem1').animate({opacity:0},100).animate({opacity:1},100).animate({opacity:0},100).animate({opacity:1},100).animate({opacity:0},100).animate({opacity:1},100,function(){
+            $('.personagem2').animate({opacity:0},100).animate({opacity:1},100).animate({opacity:0},100).animate({opacity:1},100).animate({opacity:0},100).animate({opacity:1},100);
+        });
+    }
+});
+var gameoverp1 = new Howl({
+    urls: ['media/audio/gameover-p1.mp3'],
+    volume: 1,
+    onend: function() {
+        
+    }
+});
+var gameoverp2 = new Howl({
+    urls: ['media/audio/gameover-p2.mp3'],
+    volume: 1,
+    onend: function() {
+        
+    }
+});
+var correto = new Howl({
+    urls: ['media/audio/correto.mp3'],
+    volume: 1,
+    onend: function() {
+        
+    }
+});
+var erro = new Howl({
+    urls: ['media/audio/erro.mp3'],
+    volume: 1,
+    onend: function() {
+        
+    }
+});
 // Configurações dos textos do botão de ajuda... Se houver mais de um texto do botão de ajuda, no arquivo FUNÇÕES.JS de desenvolvimento insira apenas a variavel "txtLvl = NUMERO DO TEXTO DO BOTÃO DE AJUDA QUE APARECERÁ, no local da função de desenvolvimento do projeto.
 function textosInstrucoes(txtLvl){
 	
@@ -568,22 +612,22 @@ function StopConfetti() {
 	function marcacao(marcar, elemento){
 		if(marcar == "correto"){
 			$(elemento).addClass("sucesso").css({"color":"#090"});
-			somFx("correto",50);
+			correto.stop().play();
 		}else if(marcar == "errado"){
 			
 			if(vidas === 0){
 				if(id == "p1"){
-					somFx("gameover-p1",50);
+					gameoverp1.stop().play();
 					feedback("errado","326px","355px","400px","60px","30px","Seja bem-vindo novamente! Boa sorte em seu novo passeio!");
 					document.querySelector(".professorF").style.bottom="20px";
 					
 				}else if(id == "p2"){
-					somFx("gameover-p2",50);
+					gameoverp2.stop().play();
 					feedback("errado","326px","355px","400px","60px","30px","Seja bem-vinda novamente! Boa sorte em seu novo passeio!");
 					document.querySelector(".professorF").style.bottom="20px";
 				}
 			}else{
-				somFx("erro",50);
+				erro.stop().play();
 				var retira = "40";
 				$(elemento).css({"opacity":".6","color":"#F00","text-decoration":"line-through"}).off("click");
 				$(".chances img:first-child").remove();
@@ -886,11 +930,9 @@ function StopConfetti() {
 		capa.cabecalho.css({marginTop:"-380px"});
 		capa.botaoIniciar.css({width:"0", marginRight:"-50px"});
 		capa.botaoCredito.css({marginLeft:"250px"});
+        musica.stop().play();
 		setTimeout(function(){
 			capa.imagem.fadeOut(300,function(){
-			somMusica("musica",500);
-			$(".somLoop").prop("volume",.3);
-			
 			setTimeout(function(){
 				capa.imagem.fadeOut(300,function(){
 					$(this).remove();
@@ -902,21 +944,13 @@ function StopConfetti() {
 							setTimeout(function(){
 								personagem2.seletor.show(0).addClass("animated fadeInUp");
 								setTimeout(function(){
+                                    musica.volume(.3);
 									$(".personagem1, .personagem2").removeClass("fadeInUp");
 									$("#bemvindo").removeClass("animated fadeInUp");
 									$(".professor").show().addClass("animated fadeInUp");
 									setTimeout(function(){
 										$("#bemvindo .fala").show().addClass("animated fadeInUp");
-										somFx("bemvindo",100);
-										$(".somFx").on("ended",function(){
-											$(this).remove();
-											$(".somLoop").prop("volume",1);
-											personagem1.seletor.animate({opacity:0},100).animate({opacity:1},100).animate({opacity:0},100).animate({opacity:1},100).animate({opacity:0},100).animate({opacity:1},100,function(){
-											personagem2.seletor.animate({opacity:0},100).animate({opacity:1},100).animate({opacity:0},100).animate({opacity:1},100).animate({opacity:0},100).animate({opacity:1},100);
-											});
-											
-										});
-										// Ação dos personagens
+										som_bemvindo.stop().play();
 										personagem1.seletor.on({
 											mouseover:function(){
 												$(this).find("img").attr("src","img/personagem1-hover.png")
@@ -939,6 +973,7 @@ function StopConfetti() {
 										});
 										personagem1.seletor.on({
 											click:function(){
+                                                som_bemvindo.stop();
 												id = "p1";
 												personagem1.seletor.off("click");
 												$("#bemvindo").addClass("animated fadeOutDown");
@@ -953,6 +988,7 @@ function StopConfetti() {
 										})
 										personagem2.seletor.on({
 											click:function(){
+                                                som_bemvindo.stop();
 												id = "p2";
 												personagem2.seletor.off("click");
 												$("#bemvindo").addClass("animated fadeOutDown");
@@ -977,63 +1013,6 @@ function StopConfetti() {
 		},800);
 	};
 	
-	// Ativa créditos
-	capa.botaoCredito.on("click",function(){
-		$(this).fadeOut(500);		
-		capa.creditos.janela.fadeIn(500,function(){
-			capa.creditos.texto.stop().animate({marginTop:"-340px"},25000, "linear");
-			starwars = setInterval(function(){
-				capa.creditos.texto.css({marginTop:"261px"}).stop().animate({marginTop:"-340px"},25000, "linear");
-			},25000);
-			
-		});
-	});
-	
-	//Fecha os créditos
-	capa.creditos.botaoFechar.on("click",function(){
-		capa.creditos.texto.stop().css({marginTop:"261px"});
-		clearInterval(starwars);
-		capa.creditos.janela.fadeOut(500);
-		capa.botaoCredito.fadeIn(500);
-	});
-
-	// Abre opções do Objeto
-	opcoes.tool.on({
-		click:function(){
-			if(opcoes.ativo == 0){
-				textosInstrucoes(txtLvl);
-				$(this).parent().css("box-shadow","-5px -25px 10px rgba(0,0,0,.5)");
-				$(this).css("opacity",".3");
-				opcoes.cntInstrucoes.removeClass("animated rotateOutUpRight");
-				opcoes.cntInstrucoes.show().addClass("animated rotateInDownRight");
-				opcoes.ativo = 1;
-			}else{
-				$(this).parent().css("box-shadow","none");
-				$(this).css("opacity","1");
-				opcoes.cntInstrucoes.removeClass("animated rotateInDownRight");
-				opcoes.cntInstrucoes.addClass("animated rotateOutUpRight");
-				opcoes.ativo = 0;
-			}
-		}
-	});
-	
-	opcoes.overlay.on({
-		click: function(){
-			opcoes.tool.removeClass("opened").css({backgroundPosition:"11px 15px"});
-			opcoes.botoes.hide();
-			opcoes.menu.background.css({height:"78px", backgroundPosition:"bottom"});
-			$(".overlayOptions").hide();
-			if($(".seta").is(":visible")){
-				opcoes.cntInstrucoes.css({
-				width:"0px",
-				opacity:"0"
-				});
-				$(".seta").fadeOut(200);
-				$("#instrucoes p").remove();
-			}
-		}
-		
-	});
 	// Botão Volta pra capa
 	opcoes.menu.atualizar.on("click",function(){
 		//location.href="index.html"
@@ -1044,6 +1023,7 @@ function StopConfetti() {
 	function verificar_inicio(){
 	  verificar_inicio_cnd = setInterval(function(){
 	  if(window.sessionStorage.getItem('iniciar_oed')=='sim'){
+		  //alert("iniciar_oed");
 	      //startGame.init();
 		  iniciar_oed_funcoes();
 	      clearInterval(verificar_inicio_cnd);
@@ -1052,7 +1032,7 @@ function StopConfetti() {
 	}
 }
 
-function iniciar_com_tap(){
-    iniciar_oed_funcoes();
-    clearInterval(verificar_inicio_cnd);
+	function iniciar_com_tap(){
+        iniciar_oed_funcoes();
+	clearInterval(verificar_inicio_cnd);
 }
