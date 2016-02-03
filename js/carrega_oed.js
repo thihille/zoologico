@@ -356,7 +356,7 @@ var TrocaNavegacao = function(navegacao){
 	$('head').append('<meta http-equiv="content-type" content="text/html;charset=utf-8"><meta http-equiv="cache-control" content="max-age=0" /><meta http-equiv="expires" content="0" /><meta name="author" content="Editora do Brasil" /><meta name="copyright" content="© 2014 Editoradobrasil.com.br" /><meta name="apple-mobile-web-app-title" content="Editora do Brasil"><link rel="stylesheet" href="css/style.css" type="text/css"><link rel="stylesheet" href="../css/normalize.css" type="text/css"><link rel="stylesheet" href="../css/magic.min.css" type="text/css"><link rel="stylesheet" href="../css/animate.css" type="text/css"><link rel="stylesheet" href="../css/fontsAkpalo.css" />');
 
 	/* A função abaixo inicia o objeto de acordo com o clique no botão "Iniciar" do template */
-	/*verificar_inicio();
+	verificar_inicio();
 	function verificar_inicio(){
 	  verificar_inicio_cnd = setInterval(function(){
 	  if(window.sessionStorage.getItem('iniciar_oed')=='sim'){
@@ -364,7 +364,7 @@ var TrocaNavegacao = function(navegacao){
 	      clearInterval(verificar_inicio_cnd);
 	    }
 	  }, 1000);
-	}*/
+	}
 
 	
 })();
