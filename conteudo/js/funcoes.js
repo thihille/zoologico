@@ -667,83 +667,68 @@ function movendo(tempoExe){
 // --------------------------- Botões Padrões
 	// Inicia Objeto
 	//capa.botaoIniciar.on("click",function(){
-    function iniciar_oed_funcoes(){
-        setTimeout(function(){
-            $("#bemvindo").show().addClass("animated fadeInUp");
-            setTimeout(function(){
-                personagem1.seletor.show(0).addClass("animated fadeInUp");
-                setTimeout(function(){
-                    personagem2.seletor.show(0).addClass("animated fadeInUp");
-                    setTimeout(function(){
-                        musica.volume(.3);
-                        $(".personagem1, .personagem2").removeClass("fadeInUp");
-                        $("#bemvindo").removeClass("animated fadeInUp");
-                        $(".professor").show().addClass("animated fadeInUp");
-                        setTimeout(function(){
-                            $("#bemvindo .fala").show().addClass("animated fadeInUp");
-                            som_bemvindo.stop().play();
-                            personagem1.seletor.on({
-                                mouseover:function(){
-                                    $(this).find("img").attr("src","img/personagem1-hover.png")
-                                    $(this).addClass("animated bounce")
-                                },
-                                mouseleave:function(){
-                                    $(this).find("img").attr("src","img/personagem1.png")
-                                    $(this).removeClass("animated bounce")
-                                }
-                            });
-                            personagem2.seletor.on({
-                                mouseover:function(){
-                                    $(this).find("img").attr("src","img/personagem2-hover.png")
-                                    $(this).addClass("animated bounce")
-                                },
-                                mouseleave:function(){
-                                    $(this).find("img").attr("src","img/personagem2.png")
-                                    $(this).removeClass("animated bounce")
-                                }
-                            });
-                            personagem1.seletor.on({
-                                click:function(){
-                                    som_bemvindo.stop();
-                                    id = "p1";
-                                    personagem1.seletor.off("click");
-                                    $("#bemvindo").addClass("animated fadeOutDown");
-                                    setTimeout(function(){
-                                        $("#bemvindo").remove();
-                                        $(".pgrMap1-"+id).fadeIn(500);
-                                    },1000);
-                                    $(".pergunta .chances").children("img").attr("src","img/vida-"+id+".png");
-                                    movendo(3500);
-                                    opcoes.textoInstrucoes = "Clique nos elementos na tela para responder às perguntas."
-                                }
-                            })
-                            personagem2.seletor.on({
-                                click:function(){
-                                    som_bemvindo.stop();
-                                    id = "p2";
-                                    personagem2.seletor.off("click");
-                                    $("#bemvindo").addClass("animated fadeOutDown");
-                                    setTimeout(function(){
-                                        $("#bemvindo").remove();
-                                        $(".pgrMap1-"+id).fadeIn(500);
-                                    },1000);
-                                    $(".pergunta .chances").children("img").attr("src","img/vida-"+id+".png");
-                                    movendo(3500);
-                                    opcoes.textoInstrucoes = "Clique nos elementos na tela para responder às perguntas."
-                                }
-                            })
-                        },500);
-                    },500);
-                },300);
-            },500);
-        },1000);
-	};
 	
 	verificar_inicio();
     
     startGame = {
         init:function(){
             musica.stop().play();
+            $("#bemvindo").show()
+            $(".personagem1, .personagem2").show();
+            $(".professor").fadeIn(1000,function(){
+                $("#bemvindo .fala").show().addClass("animated fadeInUp");
+                som_bemvindo.stop().play();
+                personagem1.seletor.on({
+                    mouseover:function(){
+                        $(this).find("img").attr("src","img/personagem1-hover.png")
+                        $(this).addClass("animated bounce")
+                    },
+                    mouseleave:function(){
+                        $(this).find("img").attr("src","img/personagem1.png")
+                        $(this).removeClass("animated bounce")
+                    }
+                });
+                personagem2.seletor.on({
+                    mouseover:function(){
+                        $(this).find("img").attr("src","img/personagem2-hover.png")
+                        $(this).addClass("animated bounce")
+                    },
+                    mouseleave:function(){
+                        $(this).find("img").attr("src","img/personagem2.png")
+                        $(this).removeClass("animated bounce")
+                    }
+                });
+                personagem1.seletor.on({
+                    click:function(){
+                        som_bemvindo.stop();
+                        id = "p1";
+                        personagem1.seletor.off("click");
+                        $("#bemvindo").addClass("animated fadeOutDown");
+                        setTimeout(function(){
+                            $("#bemvindo").remove();
+                            $(".pgrMap1-"+id).fadeIn(500);
+                        },1000);
+                        $(".pergunta .chances").children("img").attr("src","img/vida-"+id+".png");
+                        movendo(3500);
+                        opcoes.textoInstrucoes = "Clique nos elementos na tela para responder às perguntas."
+                    }
+                })
+                personagem2.seletor.on({
+                    click:function(){
+                        som_bemvindo.stop();
+                        id = "p2";
+                        personagem2.seletor.off("click");
+                        $("#bemvindo").addClass("animated fadeOutDown");
+                        setTimeout(function(){
+                            $("#bemvindo").remove();
+                            $(".pgrMap1-"+id).fadeIn(500);
+                        },1000);
+                        $(".pergunta .chances").children("img").attr("src","img/vida-"+id+".png");
+                        movendo(3500);
+                        opcoes.textoInstrucoes = "Clique nos elementos na tela para responder às perguntas."
+                    }
+                });
+            });
         }
     }
 	function verificar_inicio(){
@@ -751,8 +736,6 @@ function movendo(tempoExe){
 	  if(window.sessionStorage.getItem('iniciar_oed')=='sim'){
 		  //alert("iniciar_oed");
 	      startGame.init();
-          
-		  iniciar_oed_funcoes();
 	      clearInterval(verificar_inicio_cnd);
 	    }
 	  }, 1000);
