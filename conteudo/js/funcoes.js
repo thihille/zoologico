@@ -44,6 +44,7 @@ var erro = new Howl({
         
     }
 });
+// Girafa
 var pergunta_girafa = new Howl({
     urls: ['media/audio/texto-girafa.mp3']
 });
@@ -52,6 +53,26 @@ var texto_girafa_acerto = new Howl({
 });
 var texto_girafa_erro = new Howl({
     urls: ['media/audio/texto-girafa-erro.mp3']
+});
+//Elefantes
+var pergunta_elefantes = new Howl({
+    urls: ['media/audio/texto-elefantes.mp3']
+});
+var texto_elefantes_acerto = new Howl({
+    urls: ['media/audio/texto-elefantes-acerto.mp3']
+});
+var texto_elefantes_erro = new Howl({
+    urls: ['media/audio/texto-elefantes-erro.mp3']
+});
+//Camelo
+var pergunta_camelo = new Howl({
+    urls: ['media/audio/texto-camelo.mp3']
+});
+var texto_camelo_acerto = new Howl({
+    urls: ['media/audio/texto-camelo-acerto.mp3']
+});
+var texto_camelo_erro = new Howl({
+    urls: ['media/audio/texto-camelo-erro.mp3']
 });
 // Configurações dos textos do botão de ajuda... Se houver mais de um texto do botão de ajuda, no arquivo FUNÇÕES.JS de desenvolvimento insira apenas a variavel "txtLvl = NUMERO DO TEXTO DO BOTÃO DE AJUDA QUE APARECERÁ, no local da função de desenvolvimento do projeto.
 function textosInstrucoes(txtLvl){
@@ -274,11 +295,11 @@ function movendo(tempoExe){
             pergunta_girafa.stop().play();
             conteudo(100, "id1");
         }else if($(".sucesso").length == "1"){
-            somFx("texto-elefantes",1800);
+            pergunta_elefantes.stop().play();
             $(".pgrMap2-"+id).fadeIn(500);
             conteudo(2000, "id2");
         }else if($(".sucesso").length == "2"){
-            somFx("texto-camelo",1800);
+            pergunta_camelo.stop().play();
             $(".pgrMap3-"+id).fadeIn(500);
             conteudo(2000, "id3");
             txtLvl = 1;
@@ -380,13 +401,27 @@ function movendo(tempoExe){
 			setTimeout(function(){
 				balao.position.show().addClass("animated "+ efeito.aparece);
 				if(audio == "texto-girafa-acerto"){
+                    pergunta_girafa.stop();
                     texto_girafa_acerto.stop().play();
+                }else if(audio == "texto-elefantes-acerto"){
+                    pergunta_elefantes.stop();
+                    texto_elefantes_acerto.stop().play();
+                }else if(audio == "texto-camelo-acerto"){
+                    pergunta_camelo.stop();
+                    texto_camelo_acerto.stop().play();
                 }
 				setTimeout(function(){
 					movendo(velPgr);
-					certo.instrutor.removeClass(efeito.desliza);certo.instrutor.addClass(efeito.zoom.sai);certo.background.removeClass(efeito.aparece1);certo.background.addClass(efeito.desaparece1);balao.position.removeClass(efeito.aparece);	balao.position.addClass(efeito.desaparece);
+                    certo.instrutor.removeClass(efeito.desliza);
+                    certo.instrutor.addClass(efeito.zoom.sai);
+                    certo.background.removeClass(efeito.aparece1);
+                    certo.background.addClass(efeito.desaparece1);
+                    balao.position.removeClass(efeito.aparece);
+                    balao.position.addClass(efeito.desaparece);
 					setTimeout(function(){
-						certo.background.removeClass(efeito.desaparece1).hide();certo.instrutor.removeClass(efeito.zoom.sai).hide();balao.position.removeClass(efeito.desaparece).hide();
+						certo.background.removeClass(efeito.desaparece1).hide();
+                        certo.instrutor.removeClass(efeito.zoom.sai).hide();
+                        balao.position.removeClass(efeito.desaparece).hide();
 					},1000);
 				},8000);
 			},1000);
@@ -398,14 +433,26 @@ function movendo(tempoExe){
 				setTimeout(function(){
 					balao.position.show().addClass("animated "+ efeito.aparece);
 					if(audio == "texto-girafa-erro"){
+                        pergunta_girafa.stop();
                         texto_girafa_erro.stop().play();
                     }else if(audio == "texto-elefantes-erro"){
-                        
+                        pergunta_elefantes.stop();
+                        texto_elefantes_erro.stop().play();
+                    }else if(audio == "texto-camelo-erro"){
+                        pergunta_camelo.stop();
+                        texto_camelo_erro.stop().play();
                     }
 					setTimeout(function(){
-						erro.instrutor.removeClass(efeito.desliza);erro.instrutor.addClass(efeito.zoom.sai);erro.background.removeClass(efeito.aparece1);erro.background.addClass(efeito.desaparece1);balao.position.removeClass(efeito.aparece);	balao.position.addClass(efeito.desaparece);
+						erro.instrutor.removeClass(efeito.desliza);
+                        erro.instrutor.addClass(efeito.zoom.sai);
+                        erro.background.removeClass(efeito.aparece1);
+                        erro.background.addClass(efeito.desaparece1);
+                        balao.position.removeClass(efeito.aparece);
+                        balao.position.addClass(efeito.desaparece);
 						setTimeout(function(){
-							erro.background.removeClass(efeito.desaparece1).hide();erro.instrutor.removeClass(efeito.zoom.sai).hide();balao.position.removeClass(efeito.desaparece).hide();
+							erro.background.removeClass(efeito.desaparece1).hide();
+                            erro.instrutor.removeClass(efeito.zoom.sai).hide();
+                            balao.position.removeClass(efeito.desaparece).hide();
 						},1000);
 					},7000);
 				},1000);
