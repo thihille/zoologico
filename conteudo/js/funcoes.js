@@ -740,13 +740,19 @@ function movendo(tempoExe){
 	};
 	
 	verificar_inicio();
+    
+    startGame = {
+        init:function(){
+            musica.stop().play();
+        }
+    }
 	function verificar_inicio(){
 	  verificar_inicio_cnd = setInterval(function(){
 	  if(window.sessionStorage.getItem('iniciar_oed')=='sim'){
 		  //alert("iniciar_oed");
-	      //startGame.init();
+	      startGame.init();
           
-		  iniciar_oed_funcoes();musica.stop().play();
+		  iniciar_oed_funcoes();
 	      clearInterval(verificar_inicio_cnd);
 	    }
 	  }, 1000);
