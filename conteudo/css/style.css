@@ -191,6 +191,55 @@ body{
 	background-color:#FFF;
 	margin:50px 0 0 30px;
 }
+.dly0.atencao {
+	-webkit-animation:anAtencao 1s both;
+	-moz-animation:anAtencao 1s both;
+	animation:anAtencao 1s both;
+}
+.dly1.atencao {
+	-webkit-animation:anAtencao 1s both;
+	-moz-animation:anAtencao 1s both;
+	animation:anAtencao 1s both;
+    animation-delay: 1s;
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+}
+@-webkit-keyframes anAtencao {
+    0% {
+        opacity: 1;
+    }
+    1%, 40%, 80% {
+        opacity: 0;
+    }
+    20%, 60%, 100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes anAtencao {
+    0% {
+        opacity: 1;
+    }
+    1%, 40%, 80% {
+        opacity: 0;
+    }
+    20%, 60%, 100% {
+        opacity: 1;
+    }
+}
+
+@keyframes anAtencao {
+    0% {
+        opacity: 1;
+    }
+    1%, 40%, 80% {
+        opacity: 0;
+    }
+    20%, 60%, 100% {
+        opacity: 1;
+    }
+}
+
 #creditos .barraLogo {
 	float:left;
 	width:120px;

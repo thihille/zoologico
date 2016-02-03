@@ -12,9 +12,8 @@ var som_bemvindo = new Howl({
     urls: ['media/audio/bemvindo.mp3'],
     volume: 1,
     onend: function() {
-        $('.personagem1').animate({opacity:0},100).animate({opacity:1},100).animate({opacity:0},100).animate({opacity:1},100).animate({opacity:0},100).animate({opacity:1},100,function(){
-            $('.personagem2').animate({opacity:0},100).animate({opacity:1},100).animate({opacity:0},100).animate({opacity:1},100).animate({opacity:0},100).animate({opacity:1},100);
-        });
+        $('.personagem1').addClass('dly0 atencao');
+        $('.personagem2').addClass('dly1 atencao');
     }
 });
 var gameoverp1 = new Howl({
@@ -45,6 +44,15 @@ var erro = new Howl({
         
     }
 });
+var pergunta_girafa = new Howl({
+    urls: ['media/audio/texto-girafa.mp3']
+});
+var texto_girafa_acerto = new Howl({
+    urls: ['media/audio/texto-girafa-acerto.mp3']
+});
+var texto_girafa_erro = new Howl({
+    urls: ['media/audio/texto-girafa-erro.mp3']
+});
 // Configurações dos textos do botão de ajuda... Se houver mais de um texto do botão de ajuda, no arquivo FUNÇÕES.JS de desenvolvimento insira apenas a variavel "txtLvl = NUMERO DO TEXTO DO BOTÃO DE AJUDA QUE APARECERÁ, no local da função de desenvolvimento do projeto.
 function textosInstrucoes(txtLvl){
 	
@@ -54,131 +62,6 @@ function textosInstrucoes(txtLvl){
 		$("#instrucoes").html("Arraste os elementos na tela para responder às perguntas.");
 	}else if(txtLvl == 2){
 		$("#instrucoes").html("");
-	}
-}
-
-// JIMBOE
-function engine(tipo){
-	
-	// Busca ID do HTML
-	var 
-	init = document.getElementById("init"),
-	conteudo = document.getElementById("content");
-
-	// Cria os elementos
-	var	
-	header = document.createElement("div"),
-	iconHeader = document.createElement("div"),
-	tituloHeader = document.createElement("h1"),
-	btnOptions = document.createElement("div"),
-	activeOptions = document.createElement("div"),
-	listOptions = document.createElement("ul"),
-	instrucoes = document.createElement("div"),
-	setaInstrucoes = document.createElement("div"),
-	overlayOptions = document.createElement("div");
-		
-	// Seta as Classes e variáveis	
-	header.setAttribute("id","header");
-	iconHeader.setAttribute("class", "img"+config.genero+" icon");
-	btnOptions.setAttribute("id","btnOptions");
-	activeOptions.setAttribute("class","actionOptions");
-	listOptions.setAttribute("id","navOptions");
-	instrucoes.setAttribute("id","instrucoes");
-	setaInstrucoes.setAttribute("class","seta");
-	overlayOptions.setAttribute("class","overlayOptions");
-		
-	var
-	btnStartCapa = $("#capa .acoes div:first-child"),
-	subHeader = $(".subheader");
-	subHeaderText = $(".subheader p");
-	botaoPop = $(".btnFechaPopUp, .btnFechaSmall, .btnFechaSmallFinaliza"),
-	jnlFeed = $(".feedback, .feedsmall"),
-	srcBotao1 = new Array ("btnHome","btnSom","btnInstrucoes"),
-	tituloNavegador = $("head title");
-	
-	for(var m=0;m < srcBotao1.length;m++){
-		var list = document.createElement("li");
-			list.setAttribute("class","btnOption "+ srcBotao1[m]);
-		var imgList = document.createElement("img");
-			imgList.setAttribute("src","img/"+srcBotao1[m]+".png");
-			list.appendChild(imgList);				
-			listOptions.appendChild(list);
-			header.appendChild(listOptions);
-	}
-		
-	// Create DOM
-	tituloNavegador.html(config.ano+" - "+config.titulo);
-	init.insertBefore(header, conteudo);
-	init.appendChild(overlayOptions);
-	header.appendChild(iconHeader);
-	header.appendChild(tituloHeader);
-	header.appendChild(btnOptions);
-	btnOptions.appendChild(activeOptions);
-	instrucoes.appendChild(setaInstrucoes);
-	header.appendChild(instrucoes);
-	tituloHeader.innerHTML = config.titulo;
-	iconHeader.style.backgroundImage = config.genero;
-	
-	if(tipo == "matematica"){
-		$("body").css({background:config.matematica.bck});
-		iconHeader.style.backgroundColor = config.matematica.cp4;
-		header.style.backgroundColor = config.matematica.cp1; 
-		btnOptions.style.background = config.matematica.btnOptions;
-		btnStartCapa.css("background-color",config.matematica.cs1);	
-		subHeader.css({"background-color":config.matematica.cs1, width:"335px"});
-		subHeaderText.text(config.ano);
-		botaoPop.css("background-color",config.matematica.cs1);
-		$("#instrucoes").css("background",config.matematica.cp1);
-		$(".seta").css("border-left-color",config.matematica.cp1);
-		jnlFeed.css("border", "5px solid "+config.matematica.cs1);
-	}else if(tipo == "portugues"){
-		$("body").css({background:config.portugues.bck});
-		iconHeader.style.backgroundColor = config.portugues.cp4;
-		header.style.backgroundColor = config.portugues.cp1; 
-		btnOptions.style.background = config.portugues.btnOptions;
-		btnStartCapa.css("background-color",config.portugues.cs1);	
-		subHeader.css({"background-color":config.portugues.cs1, width:"335px"});	
-		subHeaderText.text(config.ano);
-		botaoPop.css("background-color",config.portugues.cs4);
-		jnlFeed.css("border", "5px solid "+config.portugues.cs4);
-		$("#instrucoes").css("background",config.portugues.cp1);
-		$(".seta").css("border-left-color",config.portugues.cp1);
-	}else if(tipo == "geografia"){
-		$("body").css({background:config.geografia.bck});
-		iconHeader.style.backgroundColor = config.geografia.cp4;
-		header.style.backgroundColor = config.geografia.cp1; 
-		btnOptions.style.background = config.geografia.btnOptions;
-		botaoPop.css("background-color",config.geografia.cs4);
-		btnStartCapa.css("background-color",config.geografia.cs1);	
-		subHeader.css({"background-color":config.geografia.cs1, width:"335px"});	
-		subHeaderText.text(config.ano);
-		jnlFeed.css("border", "5px solid "+config.geografia.cs4);
-		$("#instrucoes").css("background",config.geografia.cp1);
-		$(".seta").css("border-left-color",config.geografia.cp1);
-	}else if(tipo == "ciencias"){
-		$("body").css({background:config.ciencias.bck});
-		iconHeader.style.backgroundColor = config.ciencias.cp4;
-		header.style.backgroundColor = config.ciencias.cp1; 
-		btnOptions.style.background = config.ciencias.btnOptions;
-		btnStartCapa.css("background-color",config.ciencias.cs1);	
-		subHeader.css({"background-color":config.ciencias.cs1, width:"335px"});	
-		subHeaderText.text(config.ano);
-		botaoPop.css("background-color",config.ciencias.cs4);
-		jnlFeed.css("border", "5px solid "+config.ciencias.cs4);
-		$("#instrucoes").css("background",config.ciencias.cp1);
-		$(".seta").css("border-left-color",config.ciencias.cp1);
-	}else if(tipo == "historia"){
-		$("body").css({background:config.historia.bck});
-		iconHeader.style.backgroundColor = config.historia.cp4;
-		header.style.backgroundColor = config.historia.cp1; 
-		btnOptions.style.background = config.historia.btnOptions;
-		btnStartCapa.css("background-color",config.historia.cs1);	
-		subHeaderText.text(config.ano);
-		subHeader.css({"background-color":config.historia.cs1, width:"335px"});	
-		botaoPop.css("background-color",config.historia.cs4);
-		jnlFeed.css("border", "5px solid "+config.historia.cs4);
-		$("#instrucoes").css("background",config.historia.cp1);
-		$(".seta").css("border-left-color",config.historia.cp1);
 	}
 }
 // Configura Objeto
@@ -257,65 +140,9 @@ var config = {
 $(window).resize(function(){
 	telaScale();
 });
-	function somFx(urlAudio,tempo){
-		
-		if($(".somFx").length == 0){
-		}else{
-			clearTimeout(xStop);
-			$(".somFx").remove();
-		}
-		
-		var som = document.createElement("audio");
-		var source = document.createElement("source");
-		var source2 = document.createElement("source");
-			
-		som.setAttribute("class", "somFx");
-		som.setAttribute("preload","auto");
-		source.setAttribute("src","media/audio/"+urlAudio+".mp3");
-		source.setAttribute("type","audio/mpeg");
-		
-		som.appendChild(source);
-		document.body.appendChild(som);
-		
-		//audio.somFx.load()[0]; DEIXAR PARA TESTE
-		
-		xStop = setTimeout(function(){
-			$(".somFx").get(0).load();
-			$(".somFx").prop("volume",.5);
-			$(".somFx").get(0).play();
-		},tempo);
-	}
-	
-	function somMusica(urlAudio,tempo){
-		if($(".somLoop").length == 0){
-		}else{
-			clearTimeout(lStop);
-			$(".somLoop").remove();
-		}
-		
-		var loop = document.createElement("audio");
-		var source = document.createElement("source");
-		var source2 = document.createElement("source");
-			
-			loop.setAttribute("class", "somLoop");
-			loop.setAttribute("loop","true");
-			loop.setAttribute("preload","auto");
-			source.setAttribute("src","media/audio/"+urlAudio+".mp3");
-			source.setAttribute("type","audio/mpeg");
-			
-			loop.appendChild(source);
-			document.body.appendChild(loop);
-			
-			lStop = setTimeout(function(){
-				$(".somLoop").get(0).load();
-				$(".somLoop").prop("volume",.5);
-				$(".somLoop").get(0).play();
-			},tempo);
-	}
 
 // Executa esta função "start" após o carregamento das imagens
 function start(){
-	config.create(); // Seta as propriedades principais do Objeto e executa
 
 var canvas;
 var ctx;
@@ -430,85 +257,75 @@ function StopConfetti() {
     if (ctx == undefined) return;
     ctx.clearRect(0, 0, W, H);
 }
+var personagem1 = {
+    seletor:$(".personagem1")
 
-
-
-
-
-
-
-
-
-	
-	var personagem1 = {
-		seletor:$(".personagem1")
-		
-	}
-	var personagem2 = {
-		seletor:$(".personagem2")
-	}
+}
+var personagem2 = {
+    seletor:$(".personagem2")
+}
 	
 	
-	function movendo(tempoExe){
-		setTimeout(function(){
-			if($(".sucesso").length == "0"){
-				
-				$(".somLoop").prop("volume",.3);
-				somFx("texto-girafa",1000);
-				conteudo(100, "id1");
-			}else if($(".sucesso").length == "1"){
-				somFx("texto-elefantes",1800);
-				$(".pgrMap2-"+id).fadeIn(500);
-				conteudo(2000, "id2");
-			}else if($(".sucesso").length == "2"){
-				somFx("texto-camelo",1800);
-				$(".pgrMap3-"+id).fadeIn(500);
-				conteudo(2000, "id3");
-				txtLvl = 1;
-			}else if($(".sucesso").length == "3"){
-				somFx("texto-gorila",1800);
-				$(".pgrMap4-"+id).fadeIn(500);
-				txtLvl = 0;
-				conteudo(2000, "id4");
-			}else if($(".sucesso").length == "4"){
-				somFx("texto-tigres",1800);
-				$(".pergunta .exercicio").css({background:"rgba(255,255,255,.9) url(img/tigre.png) no-repeat bottom center"});
-				
-				$(".pgrMap5-"+id).fadeIn(500);
-				conteudo(2000, "id5");
-			}else if($(".sucesso").length == "5"){
-				somFx("texto-urso",1800);
-				$(".pergunta .exercicio").css({background:"rgba(255,255,255,.9) no-repeat"});
-				$(".pgrMap6-"+id).fadeIn(500);
-				conteudo(2000, "id6");
-			}else if($(".sucesso").length == "6"){
-				somFx("texto-andorinhas",1800);
-				$(".pgrMap7-"+id).fadeIn(500);
-				$(".pergunta .exercicio").css({background:"url(img/bgPerguntaId7.jpg) no-repeat"});
-				conteudo(2000, "id7");
-			}else if($(".sucesso").length == "7"){
-				somFx("texto-relogio",1800);
-				$(".pergunta .descricao").hide();
-				$(".pergunta .exercicio").css({width:"910px", background:"rgba(255,255,255,.9) no-repeat"});
-				$(".pgrMap8-"+id).fadeIn(500);
-				conteudo(2000, "id8");
-			}else if($(".sucesso").length == "8"){
-				somFx("texto-final",800);
-				somMusica("somSucesso",800);
-				$(".pgrMap9-"+id).show().addClass("animated fadeInDown");
-				$(".fala2").show().addClass("animated fadeInUp");
-				
-				StartConfetti();
-				$("canvas").show();
-				setTimeout(function(){
-					$("canvas").fadeOut(1000,function(){
-						//location.href = "index.html";
-						sessionStorage.setItem('reiniciar_oed', 'sim');
-					});
-				},13000);
-			}
-		},tempoExe);
-	}
+function movendo(tempoExe){
+    setTimeout(function(){
+        if($(".sucesso").length == "0"){
+
+            $(".somLoop").prop("volume",.3);
+            pergunta_girafa.stop().play();
+            conteudo(100, "id1");
+        }else if($(".sucesso").length == "1"){
+            somFx("texto-elefantes",1800);
+            $(".pgrMap2-"+id).fadeIn(500);
+            conteudo(2000, "id2");
+        }else if($(".sucesso").length == "2"){
+            somFx("texto-camelo",1800);
+            $(".pgrMap3-"+id).fadeIn(500);
+            conteudo(2000, "id3");
+            txtLvl = 1;
+        }else if($(".sucesso").length == "3"){
+            somFx("texto-gorila",1800);
+            $(".pgrMap4-"+id).fadeIn(500);
+            txtLvl = 0;
+            conteudo(2000, "id4");
+        }else if($(".sucesso").length == "4"){
+            somFx("texto-tigres",1800);
+            $(".pergunta .exercicio").css({background:"rgba(255,255,255,.9) url(img/tigre.png) no-repeat bottom center"});
+
+            $(".pgrMap5-"+id).fadeIn(500);
+            conteudo(2000, "id5");
+        }else if($(".sucesso").length == "5"){
+            somFx("texto-urso",1800);
+            $(".pergunta .exercicio").css({background:"rgba(255,255,255,.9) no-repeat"});
+            $(".pgrMap6-"+id).fadeIn(500);
+            conteudo(2000, "id6");
+        }else if($(".sucesso").length == "6"){
+            somFx("texto-andorinhas",1800);
+            $(".pgrMap7-"+id).fadeIn(500);
+            $(".pergunta .exercicio").css({background:"url(img/bgPerguntaId7.jpg) no-repeat"});
+            conteudo(2000, "id7");
+        }else if($(".sucesso").length == "7"){
+            somFx("texto-relogio",1800);
+            $(".pergunta .descricao").hide();
+            $(".pergunta .exercicio").css({width:"910px", background:"rgba(255,255,255,.9) no-repeat"});
+            $(".pgrMap8-"+id).fadeIn(500);
+            conteudo(2000, "id8");
+        }else if($(".sucesso").length == "8"){
+            somFx("texto-final",800);
+            somMusica("somSucesso",800);
+            $(".pgrMap9-"+id).show().addClass("animated fadeInDown");
+            $(".fala2").show().addClass("animated fadeInUp");
+
+            StartConfetti();
+            $("canvas").show();
+            setTimeout(function(){
+                $("canvas").fadeOut(1000,function(){
+                    //location.href = "index.html";
+                    sessionStorage.setItem('reiniciar_oed', 'sim');
+                });
+            },13000);
+        }
+    },tempoExe);
+}
 	function feedback(tipo, yPos,xPos,yWid,yHei,valbalao,msg, audio){
 		
 		var efeito = {
@@ -562,7 +379,9 @@ function StopConfetti() {
 			certo.engine();
 			setTimeout(function(){
 				balao.position.show().addClass("animated "+ efeito.aparece);
-				somFx(audio,100);
+				if(audio == "texto-girafa-acerto"){
+                    texto_girafa_acerto.stop().play();
+                }
 				setTimeout(function(){
 					movendo(velPgr);
 					certo.instrutor.removeClass(efeito.desliza);certo.instrutor.addClass(efeito.zoom.sai);certo.background.removeClass(efeito.aparece1);certo.background.addClass(efeito.desaparece1);balao.position.removeClass(efeito.aparece);	balao.position.addClass(efeito.desaparece);
@@ -578,7 +397,11 @@ function StopConfetti() {
 				erro.engine();
 				setTimeout(function(){
 					balao.position.show().addClass("animated "+ efeito.aparece);
-					somFx(audio,100);
+					if(audio == "texto-girafa-erro"){
+                        texto_girafa_erro.stop().play();
+                    }else if(audio == "texto-elefantes-erro"){
+                        
+                    }
 					setTimeout(function(){
 						erro.instrutor.removeClass(efeito.desliza);erro.instrutor.addClass(efeito.zoom.sai);erro.background.removeClass(efeito.aparece1);erro.background.addClass(efeito.desaparece1);balao.position.removeClass(efeito.aparece);	balao.position.addClass(efeito.desaparece);
 						setTimeout(function(){
