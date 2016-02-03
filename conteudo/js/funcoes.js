@@ -74,89 +74,6 @@ var texto_camelo_acerto = new Howl({
 var texto_camelo_erro = new Howl({
     urls: ['media/audio/texto-camelo-erro.mp3']
 });
-// Configurações dos textos do botão de ajuda... Se houver mais de um texto do botão de ajuda, no arquivo FUNÇÕES.JS de desenvolvimento insira apenas a variavel "txtLvl = NUMERO DO TEXTO DO BOTÃO DE AJUDA QUE APARECERÁ, no local da função de desenvolvimento do projeto.
-function textosInstrucoes(txtLvl){
-	
-	if(txtLvl == 0){
-		$("#instrucoes").html("Clique nos elementos da tela para responder às perguntas.");
-	}else if(txtLvl == 1){
-		$("#instrucoes").html("Arraste os elementos na tela para responder às perguntas.");
-	}else if(txtLvl == 2){
-		$("#instrucoes").html("");
-	}
-}
-// Configura Objeto
-var config = {
-	create: function(){
-		engine("matematica"); // 1 - português // 2 - matemática // 3 - ciências // 4 - história // 5 - geografia
-	},
-	titulo: "Zoológico das unidades de medida",
-	tipo: "Pnld 2016",
-	colecao: "Jimboe",
-	ano: "MATEMÁTICA | 2º Ano",
-	genero: "home", // 1 - infografico / 2 - jogo / 3 - video/ 4-dragindrop
-	
-	matematica: {
-		cp1: "rgba(46,86,166,1)",
-		cp2: "rgba(136,178,223,1)",
-		cp3: "rgba(14,49,120,1)",
-		cp4: "rgba(18,23,57,1)",
-		cs1: "rgba(246,140,61,1)",
-		cs2: "rgba(253,209,176,1)",
-		cs3: "rgba(251,178,115,1)",
-		cs4: "rgba(192,102,22,1)",
-		bck: "url(img/background-matematica.gif) repeat center",
-		btnOptions: "url(img/btnOptionsMatematica.png) no-repeat bottom right"
-	},
-	ciencias: {
-		cp1: "rgba(1,186,189,1)",
-		cp2: "rgba(119,205,208,1)",
-		cp3: "rgba(0,125,126,1)",
-		cp4: "rgba(0,72,74,1)",
-		cs1: "rgba(237,26,59,1)",
-		cs2: "rgba(245,151,149,1)",
-		cs3: "rgba(241,102,106,1)",
-		cs4: "rgba(196,18,47,1)",
-		bck: "url(img/background-ciencias.gif) repeat bottom",
-		btnOptions: "url(img/btnOptionsCiencias.png) no-repeat bottom right"
-	},
-	historia: {
-		cp1: "rgba(112,89,166,1)",
-		cp2: "rgba(176,163,208,1)",
-		cp3: "rgba(92,46,145,1)",
-		cp4: "rgba(52,12,61,1)",
-		cs1: "rgba(209,162,28,1)",
-		cs2: "rgba(238,221,140,1)",
-		cs3: "rgba(225,198,102,1)",
-		cs4: "rgba(163,139,16,1)",
-		bck: "url(img/background-historia.gif) repeat bottom",
-		btnOptions: "url(img/btnOptionsHistoria.png) no-repeat bottom right"
-	},
-	portugues: {
-		cp1: "rgba(237,20,91,1)",
-		cp2: "rgba(245,152,157,1)",
-		cp3: "rgba(176,4,65,1)",
-		cp4: "rgba(93,0,35,1)",
-		cs1: "rgba(0,169,100,1)",
-		cs2: "rgba(165,217,201,1)",
-		cs3: "rgba(79,190,149,1)",
-		cs4: "rgba(0,98,58,1)",
-		bck: "url(img/background-portugues.gif) repeat bottom",
-		btnOptions: "url(img/btnOptionsPortugues.png) no-repeat bottom right"
-	},
-	geografia: {
-		cp1: "rgba(180,62,151,1)",
-		cp2: "rgba(199,142,191,1)",
-		cp3: "rgba(143,43,120,1)",
-		cp4: "rgba(104,0,89,1)",
-		cs1: "rgba(77,184,72,1)",
-		cs2: "rgba(196,223,155,1)",
-		cs3: "rgba(151,203,89,1)",
-		cs4: "rgba(33,116,52,1)",
-		bck: "url(img/background-geografia.gif) repeat bottom",
-		btnOptions: "url(img/btnOptionsGeografia.png) no-repeat bottom right"
-	}
-}
 
 $(window).resize(function(){
 	telaScale();
@@ -747,147 +664,80 @@ function movendo(tempoExe){
 			marcacao("errado",this);
 		}
 	});
-	//Variáveis da capa
-	var 
-	capa = {
-		imagem: $("#capa"),
-		cabecalho: $("#capa .header"),
-		subcapa: $("#capa .subheader"),
-		tituloCabecalho: $("#capa .header h1"),
-		botaoIniciar: $("#capa .acoes div:first-child"),
-		botaoCredito: $("#capa .acoes div:nth-child(2)"),
-		creditos: {
-			janela: $("#creditos"),
-			texto: $(".text-creditos"),
-			botaoFechar: $(".btnFechaCreditos")
-		}
-	}
-	// Variáveis do menu Opções do Objeto
-	var 
-	opcoes = {
-		ativo:0,
-		tool: $(".actionOptions"),
-		botoes: $("#navOptions"),
-		overlay: $(".overlayOptions"),
-		menu: {
-			geral: $("#navOptions li"),
-			background: $("#btnOptions"),
-			atualizar: $(".imghome"),
-			principal: $(".btnMenu"),
-			som: $(".btnSom"),
-			somOff: $(".btnSomOff"),
-			instrucoes: $(".btnInstrucoes")
-		},
-		cntInstrucoes: $("#instrucoes"),
-		textoInstrucoes: "Selecione um personagem para iniciar o passeio."
-	}
-	
-	//Carrega Capa
-	capa.cabecalho.show().addClass("animated slideInRight");
-	capa.tituloCabecalho.text(config.titulo);
-	setTimeout(function(){
-		capa.subcapa.css({"margin-top":"-222px",opacity:"1"});
-		capa.botaoIniciar.show().addClass("animated lightSpeedIn");
-		setTimeout(function(){capa.botaoIniciar.removeClass("animated lightSpeedIn");},1000);
-		capa.botaoCredito.delay(500).fadeIn(500);
-	},1000);
-			
-	
 // --------------------------- Botões Padrões
 	// Inicia Objeto
 	//capa.botaoIniciar.on("click",function(){
-		function iniciar_oed_funcoes(){
-		capa.cabecalho.css({marginTop:"-380px"});
-		capa.botaoIniciar.css({width:"0", marginRight:"-50px"});
-		capa.botaoCredito.css({marginLeft:"250px"});
-        musica.stop().play();
-		setTimeout(function(){
-			capa.imagem.fadeOut(300,function(){
-			setTimeout(function(){
-				capa.imagem.fadeOut(300,function(){
-					$(this).remove();
-					//audioTrilha.get(0).play();
-					setTimeout(function(){
-						$("#bemvindo").show().addClass("animated fadeInUp");
-						setTimeout(function(){
-							personagem1.seletor.show(0).addClass("animated fadeInUp");
-							setTimeout(function(){
-								personagem2.seletor.show(0).addClass("animated fadeInUp");
-								setTimeout(function(){
-                                    musica.volume(.3);
-									$(".personagem1, .personagem2").removeClass("fadeInUp");
-									$("#bemvindo").removeClass("animated fadeInUp");
-									$(".professor").show().addClass("animated fadeInUp");
-									setTimeout(function(){
-										$("#bemvindo .fala").show().addClass("animated fadeInUp");
-										som_bemvindo.stop().play();
-										personagem1.seletor.on({
-											mouseover:function(){
-												$(this).find("img").attr("src","img/personagem1-hover.png")
-												$(this).addClass("animated bounce")
-											},
-											mouseleave:function(){
-												$(this).find("img").attr("src","img/personagem1.png")
-												$(this).removeClass("animated bounce")
-											}
-										});
-										personagem2.seletor.on({
-											mouseover:function(){
-												$(this).find("img").attr("src","img/personagem2-hover.png")
-												$(this).addClass("animated bounce")
-											},
-											mouseleave:function(){
-												$(this).find("img").attr("src","img/personagem2.png")
-												$(this).removeClass("animated bounce")
-											}
-										});
-										personagem1.seletor.on({
-											click:function(){
-                                                som_bemvindo.stop();
-												id = "p1";
-												personagem1.seletor.off("click");
-												$("#bemvindo").addClass("animated fadeOutDown");
-												setTimeout(function(){
-													$("#bemvindo").remove();
-													$(".pgrMap1-"+id).fadeIn(500);
-												},1000);
-												$(".pergunta .chances").children("img").attr("src","img/vida-"+id+".png");
-												movendo(3500);
-												opcoes.textoInstrucoes = "Clique nos elementos na tela para responder às perguntas."
-											}
-										})
-										personagem2.seletor.on({
-											click:function(){
-                                                som_bemvindo.stop();
-												id = "p2";
-												personagem2.seletor.off("click");
-												$("#bemvindo").addClass("animated fadeOutDown");
-												setTimeout(function(){
-													$("#bemvindo").remove();
-													$(".pgrMap1-"+id).fadeIn(500);
-												},1000);
-												$(".pergunta .chances").children("img").attr("src","img/vida-"+id+".png");
-												movendo(3500);
-												opcoes.textoInstrucoes = "Clique nos elementos na tela para responder às perguntas."
-											}
-										})
-									},500);
-								},500);
-							},300);
-						},500);
-					},1000);
-					
-				});
-			},400);
-			});
-		},800);
+    function iniciar_oed_funcoes(){
+        setTimeout(function(){
+            $("#bemvindo").show().addClass("animated fadeInUp");
+            setTimeout(function(){
+                personagem1.seletor.show(0).addClass("animated fadeInUp");
+                setTimeout(function(){
+                    personagem2.seletor.show(0).addClass("animated fadeInUp");
+                    setTimeout(function(){
+                        musica.volume(.3);
+                        $(".personagem1, .personagem2").removeClass("fadeInUp");
+                        $("#bemvindo").removeClass("animated fadeInUp");
+                        $(".professor").show().addClass("animated fadeInUp");
+                        setTimeout(function(){
+                            $("#bemvindo .fala").show().addClass("animated fadeInUp");
+                            som_bemvindo.stop().play();
+                            personagem1.seletor.on({
+                                mouseover:function(){
+                                    $(this).find("img").attr("src","img/personagem1-hover.png")
+                                    $(this).addClass("animated bounce")
+                                },
+                                mouseleave:function(){
+                                    $(this).find("img").attr("src","img/personagem1.png")
+                                    $(this).removeClass("animated bounce")
+                                }
+                            });
+                            personagem2.seletor.on({
+                                mouseover:function(){
+                                    $(this).find("img").attr("src","img/personagem2-hover.png")
+                                    $(this).addClass("animated bounce")
+                                },
+                                mouseleave:function(){
+                                    $(this).find("img").attr("src","img/personagem2.png")
+                                    $(this).removeClass("animated bounce")
+                                }
+                            });
+                            personagem1.seletor.on({
+                                click:function(){
+                                    som_bemvindo.stop();
+                                    id = "p1";
+                                    personagem1.seletor.off("click");
+                                    $("#bemvindo").addClass("animated fadeOutDown");
+                                    setTimeout(function(){
+                                        $("#bemvindo").remove();
+                                        $(".pgrMap1-"+id).fadeIn(500);
+                                    },1000);
+                                    $(".pergunta .chances").children("img").attr("src","img/vida-"+id+".png");
+                                    movendo(3500);
+                                    opcoes.textoInstrucoes = "Clique nos elementos na tela para responder às perguntas."
+                                }
+                            })
+                            personagem2.seletor.on({
+                                click:function(){
+                                    som_bemvindo.stop();
+                                    id = "p2";
+                                    personagem2.seletor.off("click");
+                                    $("#bemvindo").addClass("animated fadeOutDown");
+                                    setTimeout(function(){
+                                        $("#bemvindo").remove();
+                                        $(".pgrMap1-"+id).fadeIn(500);
+                                    },1000);
+                                    $(".pergunta .chances").children("img").attr("src","img/vida-"+id+".png");
+                                    movendo(3500);
+                                    opcoes.textoInstrucoes = "Clique nos elementos na tela para responder às perguntas."
+                                }
+                            })
+                        },500);
+                    },500);
+                },300);
+            },500);
+        },1000);
 	};
-	
-	// Botão Volta pra capa
-	opcoes.menu.atualizar.on("click",function(){
-		//location.href="index.html"
-		sessionStorage.setItem('reiniciar_oed', 'sim');
-	});
 	
 	verificar_inicio();
 	function verificar_inicio(){
@@ -895,7 +745,8 @@ function movendo(tempoExe){
 	  if(window.sessionStorage.getItem('iniciar_oed')=='sim'){
 		  //alert("iniciar_oed");
 	      //startGame.init();
-		  iniciar_oed_funcoes();
+          
+		  iniciar_oed_funcoes();musica.stop().play();
 	      clearInterval(verificar_inicio_cnd);
 	    }
 	  }, 1000);
@@ -904,5 +755,6 @@ function movendo(tempoExe){
 
 	function iniciar_com_tap(){
         iniciar_oed_funcoes();
+        
 	clearInterval(verificar_inicio_cnd);
 }
