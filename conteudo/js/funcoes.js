@@ -85,6 +85,7 @@ var personagem2 = {
 	
 	
 function movendo(tempoExe){
+    musica.volume(1);
     setTimeout(function(){
         if($(".sucesso").length == "0"){
             conteudo(100, "id1");
@@ -101,7 +102,6 @@ function movendo(tempoExe){
             conteudo(2000, "id4");
         }else if($(".sucesso").length == "4"){
             $(".pergunta .exercicio").css({background:"rgba(255,255,255,.9) url(img/tigre.png) no-repeat bottom center"});
-
             $(".pgrMap5-"+id).fadeIn(500);
             conteudo(2000, "id5");
         }else if($(".sucesso").length == "5"){
@@ -276,6 +276,7 @@ function feedback(tipo, yPos,xPos,yWid,yHei,valbalao,msg, audio){
 	function conteudo(tempo, idPergunta){
 		setTimeout(function(){
 			$("#"+idPergunta).show().addClass("animated lightSpeedIn");
+            musica.volume(.2);
             if(idPergunta == "id1") narracao1.stop().play("girafa");
             if(idPergunta == "id2") narracao1.stop().play("elefante");
             if(idPergunta == "id3") narracao1.stop().play("camelo");
@@ -296,13 +297,17 @@ function feedback(tipo, yPos,xPos,yWid,yHei,valbalao,msg, audio){
 			
 			if(vidas === 0){
 				if(id == "p1"){
+                    narracao1.stop();
+                    narracao2.stop();
 					narracao.stop().play("gameover_garoto");
-					feedback("errado","326px","355px","400px","60px","30px","Seja bem-vindo novamente! Boa sorte em seu novo passeio!");
+					feedback("errado","326px","317px","400px","60px","30px","Seja bem-vindo novamente! Boa sorte em seu novo passeio!");
 					document.querySelector(".professorF").style.bottom="20px";
 					
 				}else if(id == "p2"){
+                    narracao1.stop();
+                    narracao2.stop();
                     narracao.stop().play("gameover_garota");
-					feedback("errado","326px","355px","400px","60px","30px","Seja bem-vinda novamente! Boa sorte em seu novo passeio!");
+					feedback("errado","326px","317px","400px","60px","30px","Seja bem-vinda novamente! Boa sorte em seu novo passeio!");
 					document.querySelector(".professorF").style.bottom="20px";
 				}
 			}else{
@@ -490,7 +495,7 @@ function feedback(tipo, yPos,xPos,yWid,yHei,valbalao,msg, audio){
 			},2000);
 		}else{
 			var este = $(this).children().attr("src");
-			feedback("errado","320px","345px","450px","60px","30px","Infelizmente, esse não é o tempo que os ursos dormem diariamente. Tente novamente.","ursoe");
+			feedback("errado","320px","305px","450px","60px","30px","Infelizmente, esse não é o tempo que os ursos dormem diariamente. Tente novamente.","ursoe");
 			marcacao("errado",this);
 		}
 	});
